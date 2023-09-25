@@ -2,19 +2,229 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+@font-face {
+    font-family: "BrownStd-Bold";
+    src: url("https://cdn.shopify.com/s/files/1/0802/0980/5631/files/BROWNSTD-BOLD.TTF?v=1695102434") format("truetype");
+  }
+  @font-face {
+    font-family: "Gothic-Regular";
+    src: url("  https://cdn.shopify.com/s/files/1/0802/0980/5631/files/GOTHIC.TTF?v=1695102434") format("truetype");
+  }
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-
+  .multicolumn-list__item
+  {
+    background:transparent !important;
+  }
+  .grid__item 
+  {
+    flex-grow:0 !important; 
+  }
+  {% if section.settings.innerSection__topPadding != blank %}
+    .title-wrapper-with-link
+    {
+     padding-top: 100px !important; 
+    }
+  {% endif %}
+  .header .page-width
+  {
+    max-width:100% !important;
+  }
+  .multicolumn-card__info
+  {
+    background:transparent !important;
+    background: {{section.settings.bgColor}} !important;
+    border-radius: 20px;
+    height:100%;
+  }
+  .multicolumn-card
+  {
+    background: transparent !important;
+  }
+  {%- if section.settings.blocks_dotted -%}
+    .multicolumn-card__info
+  {
+    background:transparent !important;
+    border:2px dotted #FFFFFF !important;
+  }
+    {% elsif section.settings.blocks_dashed %}
+    .multicolumn-card__info
+  {
+    background:transparent !important;
+    border:2px dashed #FFFFFF !important;
+  }
+  {%endif%}
+  .multicolumn .title 
+  {
+    font-size:32px;
+    text-align:center;
+    font-family: "BrownStd-Bold";
+    margin:auto;
+    color: {{section.settings.Heading__color}};
+  }
+  .cardContent_50
+  {
+    width:100%;
+    max-width:100%;
+    background:transparent !important;
+  }
+  .multicolumn-card__info 
+  {
+    background:transparent !important;
+    padding: 45px !important;
+  }  
+  .cardContent_100
+  {
+    max-width: 93%;
+    width: 100%;
+    margin:auto;
+    background:transparent !important;
+  }
+  .multicolumn-list
+  {
+    justify-content:center;
+    padding-right:25px;
+    padding-left:25px
+  }
+  .subheading__heading
+  {
+    font-family: "Gothic-Regular";
+    font-size: 19px;
+    text-align: center;
+    margin: auto;
+    margin-bottom:50px;
+    max-width:60%;
+    color: {{section.settings.sub_heading__color}};
+  }
+  .grid 
+  {
+    row-gap: 40px ;
+    column-gap: 40px;
+  }
+  .block_50
+  {
+    width:50% !important;
+    max-width: 45% !important;
+  }
+  .block_100
+  {
+    width:100% !important;
+    max-width: 100% !important;
+  }
+  .inline-richtext
+  {
+    font-family: "BrownStd-Bold";
+    font-size:22px;
+    color:{{section.settings.heading_color}};
+  }
+  .multicolumn-card__info .rte p
+  {
+    font-family: "Gothic-Regular";
+    font-size:17px;
+    color:{{section.settings.text_color}}; 
+    margin-bottom: 20px;
+  }
+    #shopify-section-{{ section.id }} .background-primary
+  {
+    background:{{section.settings.bgColor}} !important;
+  }
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  @media screen and (max-width: 769px) {
+    .subheading__heading
+  {
+    font-size:17px;
+    max-width:100%;
+  }
+    .multicolumn-card__info {
+    padding: 20px !important;
+    background:transparent !important;
+}
+    {% if section.settings.innerSection__topPadding != blank %}
+    .title-wrapper-with-link
+    {
+      padding-top: 40px !important; 
+    }
+    {% endif %}
+  .block_50
+  {
+    width:100% !important;
+    max-width:100% !important;
+  }
+{%- if section.settings.blocks_dotted -%}
+    .multicolumn-card__info
+  {
+    background:transparent !important;
+    border:1.5px dotted #FFFFFF !important;
+  }
+    {% elsif section.settings.blocks_dashed %}
+    .multicolumn-card__info
+  {
+    background:transparent !important;
+    border:1.5px dashed #FFFFFF !important;
+  }
+  {%endif%}
+  .subheading__heading
+  {
+    padding-left: 35px !important;
+      padding-right: 35px !important;
+  }
+  .multicolumn-list:not(.slider) {
+      padding-left: 6px !important;
+      padding-right: 6px !important;
+  }
+  .multicolumn .title 
+  {
+    font-size: 23px;
+  }
+  .subheading__heading
+  {
+    font-size:15px;
+  }
+    .block_100
+  {
+    width:100% !important;
+  }
+.cardContent_50
+  {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  .cardContent_100
+  {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 1280px) {
+.grid {
+    row-gap: 30px ;
+    column-gap: 30px;
+  }
+  .multicolumn-list {
+     padding-right: 0px; 
+     padding-left: 0px;
+  }
+}
+@media screen and (max-width: 980px) {
+.grid {
+    row-gap: 22px ;
+    column-gap: 22px;
+  }
+  .multicolumn-list {
+     padding-right: 0px; 
+     padding-left: 0px;
+  }
+}
 {%- endstyle -%}
-
 {%- liquid
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
   assign show_mobile_slider = false
@@ -42,6 +252,13 @@
         {%- endif -%}
       </div>
     {%- endunless -%}
+    <div class="section-container">
+      {% if section.settings.sub_heading %}
+        <h2 class="subheading__heading">{{ section.settings.sub_heading }}
+           </h2>
+      {% endif %}
+    </div>
+    {%- for block in section.blocks -%}
     <slider-component class="slider-mobile-gutter">
       <ul
         class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"
@@ -56,6 +273,7 @@
             endif
           endfor
         -%}
+        {%endfor%}
         {%- for block in section.blocks -%}
           {%- assign empty_column = '' -%}
           {%- if block.settings.image == blank
@@ -68,14 +286,16 @@
 
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="{% if block.settings.width_select == '50' %} block_50{% elsif block.settings.width_select == '100' %} block_100{% endif %} multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container">
+          
+            <div class="{% if block.settings.width_select == '50' %} cardContent_50{% elsif block.settings.width_select == '100' %} cardContent_100{% endif %} multicolumn-card content-container">
+
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -198,6 +418,54 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Add a custom Background Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "innerSection__topPadding",
+      "label": "Add Inner Section Top Padding",
+         "default":false
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Add a custom Sub Heading"
+    },
+    {
+      "type": "color",
+      "id": "sub_heading__color",
+      "label": "Add a Sub Heading custom Color"
+    },
+    {
+      "type": "color",
+      "id": "Heading__color",
+      "label": "Add a Main Heading custom Color"
+    },
+    {
+      "type": "checkbox",
+      "label": "Add a dotted border",
+      "id": "blocks_dotted",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "label": "Add a dashed border",
+      "id": "blocks_dashed",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Add a custom Text Color"
+    }, 
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Add a custom Heading Color"
+    }, 
     {
       "type": "inline_richtext",
       "id": "title",
@@ -387,6 +655,23 @@
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
         },
+        {
+          "type": "select",
+          "label": "Select Width",
+          "id": "width_select",
+          "options": [
+            {
+              "label": "50% width",
+              "value": "50"
+            },
+            {
+              "label": "100% width",
+              "value": "100"
+            }
+          ],
+          "default": "50"
+        },
+        
         {
           "type": "inline_richtext",
           "id": "title",
