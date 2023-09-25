@@ -5,18 +5,293 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-
+{%- endstyle -%}
+{%- if section.settings.pageWidth -%}
+  {%- style -%}
+    .page-width
+      {
+        padding:0px;
+        max-width:100%;
+      }
+     .section-{{ section.id }} .image-with-text .page-width
+       {
+         margin:0% !important;
+       }
+  {%- endstyle -%}
+{% endif %}
+<style>
+    @font-face {
+      font-family: "BrownStd-Bold";
+      src: url("https://cdn.shopify.com/s/files/1/0802/0980/5631/files/BROWNSTD-BOLD.TTF?v=1695102434") format("truetype");
+    }
+    @font-face {
+      font-family: "Gothic-Regular";
+      src: url("  https://cdn.shopify.com/s/files/1/0802/0980/5631/files/GOTHIC.TTF?v=1695102434") format("truetype");
+    }
+    {%- if section.settings.imagePadding != blank -%}
+      #shopify-section-{{ section.id }} .image-with-text__media-item
+    {
+      padding: 100px;
+    }
+    {%endif%}
+    {%- if section.settings. section_margin != blank -%}
+    #shopify-section-{{ section.id }} .image-with-text
+    {
+     margin-bottom: 82px;
+    }
+    {%endif%}
+    .image-with-text__text-item a 
+    {
+      background-color:{{section.settings.button__color}};
+      opacity:1 !important;
+      width: 100%;
+      max-width: 264px;
+      height: 100%;
+      max-height: 65px;
+      text-align: center;
+    }
+   .bottomImage__electrolytes
+    {
+      width:100%;
+    }
+    #shopify-section-{{ section.id }} .image-with-text
+    {
+      background:{{section.settings.bgColor}};
+    }
+    #shopify-section-{{ section.id }} .customHeading
+    {
+     max-width: 800px;
+     font-family: "BrownStd-Bold";
+     font-size:26px;
+     color:{{section.settings.headingColor}};
+    }
+    {%- if section.settings.custom_HeadingMargin != blank -%}
+    #shopify-section-{{ section.id }} .customHeading
+    {
+      margin-top:40px;
+    }
+    {%endif%}
+  {%- if section.settings.electrolyte_heading != blank -%}
+    #shopify-section-{{ section.id }}  .Electrolyte__heading  
+    {
+      margin-top:62px !important;
+    }
+  {%endif%}
+  .customColor
+  {
+    font-family: "Gothic-Regular";
+    font-size:17px;
+    cursor:pointer;
+  }
+  .header .page-width
+  {
+    width: 100%;
+    max-width: 99% !important;
+  }
+  #shopify-section-{{ section.id }} .image-with-text__text
+    {
+      color:{{section.settings.textColor}};
+      font-family: "Gothic-Regular";
+      font-size: 17px;
+    }
+    {%- if section.settings.triangleIcon != blank -%}
+    #shopify-section-{{ section.id }}  .image-with-text:after
+   {
+    content: url('https://cdn.shopify.com/s/files/1/0802/0980/5631/files/inverted-triangle-removebg-preview_2.png?v=1694519535');
+    position: relative;
+    top: 38px;
+    left: 45%;
+    transform: scaleX(1.5);
+    }
+  {%endif%}
+    #shopify-section-{{ section.id }}  .Electrolyte__heading
+    {
+      font-family: "BrownStd-Bold";
+      font-size:34px;
+      max-width: 732px;
+      margin: auto;
+      font-weight:bold;
+      text-align:center;
+    }
+    .image-with-text__media img
+    {
+      object-fit:contain;
+      border:none
+    }
+    {% if section.settings.innerSection__topPadding != blank %}
+      #shopify-section-{{ section.id }} .image-with-text {
+      padding-bottom:0px;
+    }
+    {% endif %}
+  #shopify-section-{{ section.id }} .image-with-text {
+    {% if section.settings.bg-image != blank %}
+      background-image: url('{{ section.settings.bg-image.src | image_url}}');
+      background-size: cover;
+    {% else %}
+      background-color:{{section.settings.bgColor}};
+    {% endif %}
+  }
+  {% if section.settings.bg-image != blank %}
+  {%- if section.settings.imagePadding != blank -%}
+    #shopify-section-{{ section.id }} .image-with-text__media-item
+    {
+      padding:32px;
+    }
+  {% endif %}
+  {% endif %}
+  .image-with-text__text rte body
+  {
+    font-size:20px;
+  }
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-{%- endstyle -%}
-
+    @media screen and (max-width: 769px) 
+  {
+   {%- if section.settings.electrolyte_heading != blank -%}
+   #shopify-section-{{ section.id }}  .Electrolyte__heading  
+   {
+     margin-top:0px !important;
+   }
+  {%endif%} 
+  {%- if section.settings.pageWidth -%}
+   .page-width
+   {
+    max-width:100%;
+   }
+  {% endif %} 
+ #shopify-section-{{ section.id }}  .Electrolyte__heading
+  {
+    margin-top:0px
+  }
+  {%- if section.settings. section_margin != blank -%}
+  #shopify-section-{{ section.id }} .image-with-text
+   {
+     margin-bottom: 38px;
+   }
+  {%endif%}
+   {% if section.settings.innerSection__topPadding != blank %}
+  #shopify-section-{{ section.id }} .image-with-text 
+   {
+    padding-top: 50px;
+    padding-bottom: 0px
+   }
+  {% endif %}
+  #shopify-section-{{ section.id }}  .Electrolyte__heading
+  {
+  font-size:22px;
+  padding: 10px;
+  max-width: 349px;
+  }
+  #shopify-section-{{ section.id }} .image-with-text__text
+  {
+   font-size:15px;
+  }
+  #shopify-section-{{ section.id }} .image-with-text__media-item
+  {
+    padding:0px;
+  }
+  .image-with-text__text-item a
+  {
+   margin: auto;
+   max-height: 65px;
+   max-width: 194px;
+  }
+  .header 
+  {
+   max-width: 366px !important;
+  }
+   #shopify-section-{{ section.id }} .image-with-text {
+   {% if section.settings.bg-image__mobile != blank %}
+    background-image: url('{{ section.settings.bg-image__mobile.src | image_url}}');
+    background-size: cover;
+   {% else %}
+    background-color:{{section.settings.bgColor}};
+   {% endif %}
+   }
+  {%- if section.settings.triangleIcon != blank -%}
+  #shopify-section-{{ section.id }}  .image-with-text:after
+  {
+    left:45%;
+    top: 37px;
+  }
+  {%endif%}
+  #shopify-section-{{ section.id }}  .image-with-text__content
+  {
+    padding-top: 0px;
+  }
+   {%- if section.settings.marginTop != blank -%}
+   #shopify-section-{{ section.id }}  .image-with-text__content
+  {
+    margin-top:0px;
+  }
+  {%endif%}
+  #shopify-section-{{ section.id }}  .customHeading
+  {
+    font-size: 21px !important;
+  }
+   #shopify-section-{{ section.id }}.image-with-text__text
+   {
+    font-size: 15px !important;
+   }
+  #shopify-section-{{ section.id }}   .image-with-text__media-item
+  {
+   order:2;
+  }
+  #shopify-section-{{ section.id }}  .image-with-text__text-item
+  {
+    order:1;
+  }
+  .desktop-image 
+  {
+    display: none; 
+  }
+}
+  @media screen and (max-width: 1024px) {
+  #shopify-section-{{ section.id }}   .image-with-text__media-item
+  {  
+   order:2;
+  }
+  #shopify-section-{{ section.id }}  .image-with-text__text-item
+  {
+    order:1;
+  }
+  #shopify-section-{{ section.id }} .grid--2-col-tablet .grid__item
+  {
+    width:100% !important;
+  }
+  .subheading__heading 
+  {
+   padding: 28px;
+  }
+  .mobile-image
+  {
+    display: none; 
+  }
+}
+@media screen and (max-width: 1280px) {
+  {%- if section.settings.imagePadding != blank -%}
+  #shopify-section-{{ section.id }} .image-with-text__media-item
+  {
+    padding: 60px;
+  }
+  {%endif%}
+}
+</style>
 {% assign scheme1 = settings.color_schemes | first %}
-
-<div class="image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == scheme1 and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+<div class=" {% if section.settings.pageWidth %}page-width{% endif %} image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == scheme1 and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="section-container">
+    {% if section.settings.pre_headingtext %}
+      <h2 class="Electrolyte__heading">
+        <span style="color: {{ section.settings.pre_color }}">{{ section.settings.pre_headingtext }}</span>
+        <span style="color: {{ section.settings.midHeading_color }}">{{ section.settings.midHeading_text }}</span>
+        <span style="color: {{ section.settings.post_color }}">{{ section.settings.post_headingtext }}</span>
+      </h2>
+    {% endif %}
+  </div>
   <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
     <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
       <div
@@ -49,6 +324,7 @@
         {%- endif -%}
       </div>
     </div>
+
     <div class="image-with-text__text-item grid__item">
       <div
         id="ImageWithText--{{ section.id }}"
@@ -58,7 +334,7 @@
           {% case block.type %}
             {%- when 'heading' -%}
               <h2
-                class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
+                class="image-with-text__heading customHeading inline-richtext {{ block.settings.heading_size }}"
                 {{ block.shopify_attributes }}
               >
                 {{ block.settings.heading }}
@@ -82,10 +358,11 @@
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  class="customColor button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                   {{ block.shopify_attributes }}
                 >
                   {{ block.settings.button_label | escape }}
+                  {{ block.settings.button__color }}
                 </a>
               {%- endif -%}
           {%- endcase -%}
@@ -93,6 +370,25 @@
       </div>
     </div>
   </div>
+  {% if section.settings.sectionImage__bottom != blank %}
+    <div id="sectionImage__bottom" class="desktop-image">
+      <img
+        class="bottomImage__electrolytes"
+        src="{{ section.settings.sectionImage__bottom | img_url: 'original' }}"
+        alt="Bottom Section Image"
+      >
+    </div>
+  {% endif %}
+
+  {% if section.settings.sectionImage__bottom__mobile != blank %}
+    <div id="sectionImage__bottom" class="mobile-image">
+      <img
+        class="bottomImage__electrolytes"
+        src="{{ section.settings.sectionImage__bottom__mobile | img_url: 'original' }}"
+        alt="Bottom Section Image for Mobile"
+      >
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
@@ -104,9 +400,122 @@
   },
   "settings": [
     {
+      "type": "color",
+      "label": "Add Button Color",
+      "id": "button__color"
+    },
+    {
+      "type": "checkbox",
+      "id": "innerSection__topPadding",
+      "label": "Add Inner Section Top Padding",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "marginTop",
+      "label": "Remove Top Margin Above Content",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "electrolyte_heading",
+      "label": "Add Top Padding Above Electroloye Heading",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_HeadingMargin",
+      "label": "Add Margin Above Custom Heading Class",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "headingColor",
+      "label": "Add a custom Heading Color"
+    },
+    {
+      "type": "color",
+      "id": "textColor",
+      "label": "Add a custom Text Color"
+    },
+    {
+      "type": "text",
+      "label": "pre Heading",
+      "id": "pre_headingtext"
+    },
+    {
+      "type": "color",
+      "label": "pre Heading Color",
+      "id": "pre_color"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "midHeading_text"
+    },
+    {
+      "type": "color",
+      "label": "Heading Color",
+      "id": "midHeading_color"
+    },
+    {
+      "type": "text",
+      "label": "Post Heading",
+      "id": "post_headingtext"
+    },
+    {
+      "type": "color",
+      "label": "Post Heading Color",
+      "id": "post_color"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "pageWidth",
+      "label": "Remove Page Width",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "sectionImage__bottom",
+      "label": "Add a bottom Section Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sectionImage__bottom__mobile",
+      "label": "Add a bottom Section Image for Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg-image",
+      "label": "Add a Custom Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg-image__mobile",
+      "label": "Add a Custom Background Image for mobile"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Add a custom Background Color"
+    },
+    { "type": "checkbox", "id": "section_margin", "label": "Add Margin between sections", "default": false },
+    {
+      "type": "checkbox",
+      "id": "triangleIcon",
+      "label": "Add an inverted Triangle Icon",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "imagePadding",
+      "label": "Add Padding to Image",
+      "default": false
     },
     {
       "type": "select",
@@ -317,6 +726,7 @@
           "default": "Image with text",
           "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
         },
+
         {
           "type": "select",
           "id": "heading_size",
@@ -399,6 +809,7 @@
           "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
           "label": "t:sections.image-with-text.blocks.text.settings.text.label"
         },
+
         {
           "type": "select",
           "id": "text_style",
@@ -429,6 +840,7 @@
           "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
           "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
         },
+
         {
           "type": "url",
           "id": "button_link",
