@@ -1,83 +1,82 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-{%- endstyle -%}
-{%- if section.settings.pageWidth -%}
   {%- style -%}
-    .page-width
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+  {%- if section.settings.pageWidth -%}
+    {%- style -%}
+      .page-width
       {
         padding:0px;
         max-width:100%;
       }
-     .section-{{ section.id }} .image-with-text .page-width
-       {
-         margin:0% !important;
-       }
-  {%- endstyle -%}
-{% endif %}
+      .section-{{ section.id }} .image-with-text .page-width
+      {
+        margin:0% !important;
+            }
+    {%- endstyle -%}
+  {% endif %}
+
 <style>
-    @font-face {
-      font-family: "BrownStd-Bold";
-      src: url("https://cdn.shopify.com/s/files/1/0802/0980/5631/files/BROWNSTD-BOLD.TTF?v=1695102434") format("truetype");
-    }
-    @font-face {
-      font-family: "Gothic-Regular";
-      src: url("  https://cdn.shopify.com/s/files/1/0802/0980/5631/files/GOTHIC.TTF?v=1695102434") format("truetype");
-    }
-    {%- if section.settings.imagePadding != blank -%}
-      #shopify-section-{{ section.id }} .image-with-text__media-item
-    {
-      padding: 100px;
-    }
-    {%endif%}
-    {%- if section.settings. section_margin != blank -%}
+ {%- if section.settings.imagePadding != blank -%}
+   #shopify-section-{{ section.id }} .image-with-text__media-item
+   {
+     padding: 100px;
+   }
+  {%endif%}
+  {%- if section.settings. section_margin != blank -%}
     #shopify-section-{{ section.id }} .image-with-text
-    {
-     margin-bottom: 82px;
-    }
-    {%endif%}
-    .image-with-text__text-item a 
-    {
-      background-color:{{section.settings.button__color}};
-      opacity:1 !important;
-      width: 100%;
-      max-width: 264px;
-      height: 100%;
-      max-height: 65px;
-      text-align: center;
-    }
-   .bottomImage__electrolytes
-    {
-      width:100%;
-    }
-    #shopify-section-{{ section.id }} .image-with-text
-    {
-      background:{{section.settings.bgColor}};
-    }
-    #shopify-section-{{ section.id }} .customHeading
-    {
-     max-width: 800px;
-     font-family: "BrownStd-Bold";
-     font-size:26px;
-     color:{{section.settings.headingColor}};
-    }
-    {%- if section.settings.custom_HeadingMargin != blank -%}
+  {
+    margin-bottom: 82px;
+  }
+  {%endif%}
+  .image-with-text__text-item a
+  {
+    background-color:{{section.settings.button__color}};
+    opacity:1 !important;
+    width: 100%;
+    max-width: 264px;
+    height: 100%;
+    max-height: 65px;
+    text-align: center;
+  }
+  .bottomImage__electrolytes
+  {
+    width:100%;
+  }
+  #shopify-section-{{ section.id }} .image-with-text
+  {
+     background:{{section.settings.bgColor}};
+  }
+  #shopify-section-{{ section.id }} .customHeading
+  {
+    max-width: 800px;
+    font-family: "BrownStd-Bold";
+    font-size:26px;
+    color:{{section.settings.headingColor}};
+  }
+  {%- if section.settings.custom_HeadingMargin != blank -%}
     #shopify-section-{{ section.id }} .customHeading
     {
       margin-top:40px;
     }
-    {%endif%}
-  {%- if section.settings.electrolyte_heading != blank -%}
-    #shopify-section-{{ section.id }}  .Electrolyte__heading  
-    {
-      margin-top:62px !important;
-    }
   {%endif%}
-  .customColor
+  {%- if section.settings.electrolyte_heading != blank -%}
+   #shopify-section-{{ section.id }}  .Electrolyte__heading
+  {
+    margin-top:62px !important;
+  }
+  {%endif%}
+  .button__text
   {
     font-family: "Gothic-Regular";
     font-size:17px;
@@ -89,206 +88,222 @@
     max-width: 99% !important;
   }
   #shopify-section-{{ section.id }} .image-with-text__text
-    {
-      color:{{section.settings.textColor}};
-      font-family: "Gothic-Regular";
-      font-size: 17px;
-    }
-    {%- if section.settings.triangleIcon != blank -%}
-    #shopify-section-{{ section.id }}  .image-with-text:after
-   {
-    content: url('https://cdn.shopify.com/s/files/1/0802/0980/5631/files/inverted-triangle-removebg-preview_2.png?v=1694519535');
+  {
+    color:{{section.settings.textColor}};
+    font-family: "Gothic-Regular";
+    font-size: 17px;
+  }
+  #shopify-section-{{ section.id }}  .imagewithtext__svg
+  {
     position: relative;
-    top: 38px;
+    top: 69px;
     left: 45%;
     transform: scaleX(1.5);
-    }
-  {%endif%}
-    #shopify-section-{{ section.id }}  .Electrolyte__heading
-    {
-      font-family: "BrownStd-Bold";
-      font-size:34px;
-      max-width: 732px;
-      margin: auto;
-      font-weight:bold;
-      text-align:center;
-    }
-    .image-with-text__media img
-    {
-      object-fit:contain;
-      border:none
-    }
-    {% if section.settings.innerSection__topPadding != blank %}
-      #shopify-section-{{ section.id }} .image-with-text {
-      padding-bottom:0px;
-    }
-    {% endif %}
-  #shopify-section-{{ section.id }} .image-with-text {
-    {% if section.settings.bg-image != blank %}
-      background-image: url('{{ section.settings.bg-image.src | image_url}}');
-      background-size: cover;
-    {% else %}
-      background-color:{{section.settings.bgColor}};
-    {% endif %}
   }
-  {% if section.settings.bg-image != blank %}
-  {%- if section.settings.imagePadding != blank -%}
-    #shopify-section-{{ section.id }} .image-with-text__media-item
-    {
-      padding:32px;
-    }
-  {% endif %}
-  {% endif %}
-  .image-with-text__text rte body
-  {
-    font-size:20px;
-  }
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-    @media screen and (max-width: 769px) 
-  {
-   {%- if section.settings.electrolyte_heading != blank -%}
-   #shopify-section-{{ section.id }}  .Electrolyte__heading  
-   {
-     margin-top:0px !important;
-   }
-  {%endif%} 
-  {%- if section.settings.pageWidth -%}
-   .page-width
-   {
-    max-width:100%;
-   }
-  {% endif %} 
- #shopify-section-{{ section.id }}  .Electrolyte__heading
-  {
-    margin-top:0px
-  }
-  {%- if section.settings. section_margin != blank -%}
-  #shopify-section-{{ section.id }} .image-with-text
-   {
-     margin-bottom: 38px;
-   }
-  {%endif%}
-   {% if section.settings.innerSection__topPadding != blank %}
-  #shopify-section-{{ section.id }} .image-with-text 
-   {
-    padding-top: 50px;
-    padding-bottom: 0px
-   }
-  {% endif %}
   #shopify-section-{{ section.id }}  .Electrolyte__heading
   {
-  font-size:22px;
-  padding: 10px;
-  max-width: 349px;
+    font-family: "BrownStd-Bold";
+    font-size:34px;
+    max-width: 732px;
+    margin: auto;
+    font-weight:bold;
+    text-align:center;
   }
-  #shopify-section-{{ section.id }} .image-with-text__text
+  #shopify-section-{{ section.id }} .pre__headingColor
   {
-   font-size:15px;
+    color: {{ section.settings.pre_color }}
   }
-  #shopify-section-{{ section.id }} .image-with-text__media-item
+  #shopify-section-{{ section.id }} .mid__headingColor
   {
-    padding:0px;
+    color: {{ section.settings.midHeading_color }}
   }
-  .image-with-text__text-item a
+  #shopify-section-{{ section.id }} .post__headingColor
   {
-   margin: auto;
-   max-height: 65px;
-   max-width: 194px;
+    color: {{ section.settings.post_color }}
   }
-  .header 
+  .image-with-text__media img
   {
-   max-width: 366px !important;
+    object-fit:contain;
+    border:none
   }
-   #shopify-section-{{ section.id }} .image-with-text {
-   {% if section.settings.bg-image__mobile != blank %}
-    background-image: url('{{ section.settings.bg-image__mobile.src | image_url}}');
-    background-size: cover;
-   {% else %}
-    background-color:{{section.settings.bgColor}};
-   {% endif %}
-   }
-  {%- if section.settings.triangleIcon != blank -%}
-  #shopify-section-{{ section.id }}  .image-with-text:after
+  {% if section.settings.innerSection__topPadding != blank %}
+      #shopify-section-{{ section.id }} .image-with-text 
+      {
+        padding-bottom:0px;
+      }
+  {% endif %}
+  #shopify-section-{{ section.id }} .image-with-text
   {
-    left:45%;
-    top: 37px;
+    {% if section.settings.bg-image != blank %}
+        background-image: url('{{ section.settings.bg-image.src | image_url}}');
+        background-size: cover;
+    {% else %}
+        background-color:{{section.settings.bgColor}};
+    {% endif %}
   }
-  {%endif%}
-  #shopify-section-{{ section.id }}  .image-with-text__content
+    {% if section.settings.bg-image != blank %}
+    {%- if section.settings.imagePadding != blank -%}
+      #shopify-section-{{ section.id }} .image-with-text__media-item
+      {
+        padding:32px;
+      }
+    {% endif %}
+    {% endif %}
+  .image-with-text__text rte body
+    {
+      font-size:20px;
+    }
+  @media screen and (max-width: 769px)
   {
-    padding-top: 0px;
-  }
-   {%- if section.settings.marginTop != blank -%}
-   #shopify-section-{{ section.id }}  .image-with-text__content
-  {
-    margin-top:0px;
-  }
-  {%endif%}
-  #shopify-section-{{ section.id }}  .customHeading
-  {
-    font-size: 21px !important;
-  }
-   #shopify-section-{{ section.id }}.image-with-text__text
-   {
-    font-size: 15px !important;
-   }
-  #shopify-section-{{ section.id }}   .image-with-text__media-item
-  {
-   order:2;
-  }
-  #shopify-section-{{ section.id }}  .image-with-text__text-item
-  {
-    order:1;
-  }
-  .desktop-image 
-  {
-    display: none; 
-  }
+  {%- if section.settings.electrolyte_heading != blank -%}
+      #shopify-section-{{ section.id }}  .Electrolyte__heading
+      {
+        margin-top:0px !important;
+      }
+    {%endif%}
+    {%- if section.settings.pageWidth -%}
+      .page-width
+      {
+        max-width:100%;
+      }
+    {% endif %}
+      #shopify-section-{{ section.id }}  .Electrolyte__heading
+        {
+          margin-top:0px
+        }
+    {%- if section.settings. section_margin != blank -%}
+      #shopify-section-{{ section.id }} .image-with-text
+        {
+          margin-bottom: 38px;
+        }
+    {%endif%}
+    {% if section.settings.innerSection__topPadding != blank %}
+      #shopify-section-{{ section.id }} .image-with-text
+      {
+        padding-top: 50px;
+        padding-bottom: 0px
+      }
+      {% endif %}
+    #shopify-section-{{ section.id }}  .Electrolyte__heading
+    {
+      font-size:22px;
+      padding: 10px;
+      max-width: 349px;
+    }
+    #shopify-section-{{ section.id }} .image-with-text__text
+    {
+      font-size:15px;
+    }
+    #shopify-section-{{ section.id }} .image-with-text__media-item
+    {
+      padding:0px;
+    }
+    .image-with-text__text-item a 
+    {
+       margin: auto;
+       max-height: 65px;
+       max-width: 194px;
+    }
+    .header 
+    {
+      max-width: 366px !important;
+    }
+    #shopify-section-{{ section.id }} .image-with-text 
+    {
+      {% if section.settings.bg-image__mobile != blank %}
+       background-image: url('{{ section.settings.bg-image__mobile.src | image_url}}');
+       background-size: cover;
+      {% else %}
+       background-color:{{section.settings.bgColor}};
+      {% endif %}
+    }
+    {%- if section.settings.triangleIcon != blank -%}
+    #shopify-section-{{ section.id }}  .imagewithtext__svg
+    {
+      left: 39%;
+      top: 68px;
+    }
+    {%endif%}
+    #shopify-section-{{ section.id }}  .image-with-text__content
+    {
+      padding-top: 0px;
+    }
+    {%- if section.settings.marginTop != blank -%}
+    #shopify-section-{{ section.id }}  .image-with-text__content
+    {
+      margin-top:0px;
+    }
+    {%endif%}
+    #shopify-section-{{ section.id }}  .customHeading
+    {
+      font-size: 21px !important;
+    }
+    #shopify-section-{{ section.id }}.image-with-text__text
+    {
+      font-size: 15px !important;
+    }
+    #shopify-section-{{ section.id }}   .image-with-text__media-item
+    {
+      order:2;
+    }
+    #shopify-section-{{ section.id }}  .image-with-text__text-item
+    {
+      order:1;
+    }
 }
-  @media screen and (max-width: 1024px) {
-  #shopify-section-{{ section.id }}   .image-with-text__media-item
-  {  
-   order:2;
-  }
-  #shopify-section-{{ section.id }}  .image-with-text__text-item
+      /* For screens with a maximum width of 767px */
+  @media screen and (max-width: 767px)
   {
-    order:1;
+    .desktop-image 
+    {
+      display: none; /* Hide the desktop image on mobile screens */
+    }
   }
-  #shopify-section-{{ section.id }} .grid--2-col-tablet .grid__item
+    /* For screens larger than 767px */
+  @media screen and (min-width: 768px)
   {
-    width:100% !important;
+    .mobile-image
+    {
+        display: none; /* Hide the mobile image on larger screens */
+    }
   }
-  .subheading__heading 
-  {
-   padding: 28px;
+    /* For screens larger than 767px */
+  @media screen and (max-width: 1023px) {
+    #shopify-section-{{ section.id }}   .image-with-text__media-item
+    {
+      order:2;
+    }
+    #shopify-section-{{ section.id }}  .image-with-text__text-item
+    {
+      order:1;
+    }
+    #shopify-section-{{ section.id }} .grid--2-col-tablet .grid__item
+    {
+      width:100% !important;
+    }
+    .subheading__heading
+    {
+      padding: 28px;
+    }
   }
-  .mobile-image
-  {
-    display: none; 
+  @media screen and (max-width: 1280px) {
+    {%- if section.settings.imagePadding != blank -%}
+      #shopify-section-{{ section.id }} .image-with-text__media-item
+    {
+      padding: 60px;
+    }
+    {%endif%}
   }
-}
-@media screen and (max-width: 1280px) {
-  {%- if section.settings.imagePadding != blank -%}
-  #shopify-section-{{ section.id }} .image-with-text__media-item
-  {
-    padding: 60px;
-  }
-  {%endif%}
-}
 </style>
 {% assign scheme1 = settings.color_schemes | first %}
+
 <div class=" {% if section.settings.pageWidth %}page-width{% endif %} image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == scheme1 and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div class="section-container">
-    {% if section.settings.pre_headingtext %}
+    {% if section.settings.pre_text %}
       <h2 class="Electrolyte__heading">
-        <span style="color: {{ section.settings.pre_color }}">{{ section.settings.pre_headingtext }}</span>
-        <span style="color: {{ section.settings.midHeading_color }}">{{ section.settings.midHeading_text }}</span>
-        <span style="color: {{ section.settings.post_color }}">{{ section.settings.post_headingtext }}</span>
+        <span class="pre__headingColor">{{ section.settings.pre_text }}</span>
+        <span class="mid__headingColor">{{ section.settings.midHeading_text }}</span>
+        <span class="post__headingColor">{{ section.settings.post_text }}</span>
       </h2>
     {% endif %}
   </div>
@@ -358,7 +373,7 @@
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
-                  class="customColor button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  class="button__text button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                   {{ block.shopify_attributes }}
                 >
                   {{ block.settings.button_label | escape }}
@@ -370,12 +385,18 @@
       </div>
     </div>
   </div>
+  {%- if section.settings.triangleIcon != blank -%}
+    {% render 'inverted-triangle' %}
+  {% endif %}
   {% if section.settings.sectionImage__bottom != blank %}
     <div id="sectionImage__bottom" class="desktop-image">
       <img
         class="bottomImage__electrolytes"
         src="{{ section.settings.sectionImage__bottom | img_url: 'original' }}"
-        alt="Bottom Section Image"
+        alt="{{section.settings.sectionImage__bottom.alt}}"
+        height="{{section.settings.sectionImage__bottom .height}}"
+        width="{{section.settings.sectionImage__bottom .width}}"
+        loading="lazy"
       >
     </div>
   {% endif %}
@@ -385,7 +406,10 @@
       <img
         class="bottomImage__electrolytes"
         src="{{ section.settings.sectionImage__bottom__mobile | img_url: 'original' }}"
-        alt="Bottom Section Image for Mobile"
+        alt="{{section.settings.sectionImage__bottom__mobile.alt}}"
+        height="{{section.settings.sectionImage__bottom__mobile.height}}"
+        width="{{section.settings.sectionImage__bottom__mobile.width}}"
+        loading="lazy"
       >
     </div>
   {% endif %}
@@ -441,7 +465,7 @@
     {
       "type": "text",
       "label": "pre Heading",
-      "id": "pre_headingtext"
+      "id": "pre_text"
     },
     {
       "type": "color",
@@ -461,7 +485,7 @@
     {
       "type": "text",
       "label": "Post Heading",
-      "id": "post_headingtext"
+      "id": "post_text"
     },
     {
       "type": "color",
